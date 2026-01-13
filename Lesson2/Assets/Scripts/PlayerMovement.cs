@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,4 +42,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Speed Boost"))
+        {
+            IncreaseSpeed(2);
+            Destroy(other.gameObject);
+        }
+    }
 }
