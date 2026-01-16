@@ -3172,6 +3172,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1801756253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801756255}
+  - component: {fileID: 1801756254}
+  m_Layer: 0
+  m_Name: Save System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1801756254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801756253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ac8a60f83f861479ff08975227846a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveSystem
+  filePath: Assets/Resources/SaveData.csv
+--- !u!4 &1801756255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801756253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.72726, y: 0, z: -6.15561}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808887485
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,81 +3339,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40c8ccf3d2735247896cc63827d02d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleController
-  moveInput:
-    m_Name: Move Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 41f9c257-df99-4123-bc13-35a7b7bab715
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: e5bd4c4e-dd12-487b-a062-2d72ef5b7712
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: b3456f99-1be6-4911-b02d-9cd86c114ba7
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: a0953db1-29a2-4cda-91a2-eabb394eff9c
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 209bbf15-b35a-4aaf-958c-7cd9599bb283
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 27862fef-00fe-42a2-a977-98fd3a2fad21
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Input
-      m_Flags: 8
-    m_Flags: 0
-  brakeInput:
-    m_Name: Brake Input
-    m_Type: 0
-    m_ExpectedControlType: Button
-    m_Id: 62a3a98d-7944-4edf-ba1d-ff264e31b5b4
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 6a9f8483-6237-4ae8-b8e7-b70641a73875
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Brake Input
-      m_Flags: 0
-    m_Flags: 0
   wheels:
   - {fileID: 1820209710}
   - {fileID: 137070171}
   - {fileID: 77619476}
   - {fileID: 764211013}
-  power: 0
-  brake: 0
-  steer: 0
-  centerOfMass: {x: 0, y: -1, z: 0.3}
+  centerOfMassX: 0
+  centerOfMassY: -1
+  centerOfMassZ: 0.3
 --- !u!54 &1818008889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3377,7 +3355,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818008887}
   serializedVersion: 5
-  m_Mass: 0.1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3936,3 +3914,4 @@ SceneRoots:
   - {fileID: 1725701432}
   - {fileID: 1011541682}
   - {fileID: 1818008893}
+  - {fileID: 1801756255}

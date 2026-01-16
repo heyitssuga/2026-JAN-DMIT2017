@@ -1,80 +1,46 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-
+using System.Collections;
 public class VehicleController : MonoBehaviour
 {
-    public InputAction moveInput;
-    public InputAction brakeInput;
     public Transform[] wheels;
-
-    float enginePower = 150f;
-
-    public float power = 0f;
-    public float brake = 0f;
-    public float steer = 0f;
-
-    float maxSteer = 50f;
-
-    public Vector3 centerOfMass = new Vector3(0, -1, 0.3f);
-    
-    
+    float enginePower = 150.0f;
+    float power = 0.0f;
+    float brake = 0.0f;
+    float steer = 0.0f;
+    float maxSteer = 25.0f;
+    public float centerOfMassX = 0f;
+    public float centerOfMassY = -1.0f;
+    public float centerOfMassZ = 0.3f;
     void Start()
     {
-        moveInput.Enable();
-        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
-        moveInput.performed += ReadInput;
-        moveInput.canceled += ReadInput;
-        brakeInput.performed += BrakeInput;
-        brakeInput.canceled += BrakeInput;
-
+        GetComponent<Rigidbody>().centerOfMass = new Vector3(centerOfMassX, centerOfMassY, centerOfMassZ);
     }
-
-    public void ReadInput(InputAction.CallbackContext context)
+    void Update()
     {
-        Vector2 tmp = context.ReadValue<Vector2>();
-        // x = left/right
-        // y = fwd/back
-        
-        power = tmp.y * enginePower;
-        steer = tmp.x * maxSteer;
-    }
-
-    private void BrakeInput(InputAction.CallbackContext context)
-    {
-        if (brake == 0)
-        {
-            brake = GetComponent<Rigidbody>().mass;
-        }
-        else
-        {
-            brake = 0;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-                
+        power = Input.GetAxis("Vertical") * enginePower * Time.deltaTime * 250.0f;
+        steer = Input.GetAxis("Horizontal") * maxSteer;
+        brake = Input.GetKey(KeyCode.Space) ? GetComponent<Rigidbody>().mass * 1.0f : 0.0f;
         GetCollider(0).steerAngle = steer;
         GetCollider(1).steerAngle = steer;
-
-        if (brake > 0f)
+        if (brake > 0.0)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                GetCollider(i).brakeTorque = brake;
-            }
-
-            GetCollider(2).motorTorque = 0f;
-            GetCollider(3).motorTorque = 0f;
+            GetCollider(0).brakeTorque = brake;
+            GetCollider(1).brakeTorque = brake;
+            GetCollider(2).brakeTorque = brake;
+            GetCollider(3).brakeTorque = brake;
+            GetCollider(2).motorTorque = 0.0f;
+            GetCollider(3).motorTorque = 0.0f;
         }
         else
         {
+            GetCollider(0).brakeTorque = 0f;
+            GetCollider(1).brakeTorque = 0f;
+            GetCollider(2).brakeTorque = 0f;
+            GetCollider(3).brakeTorque = 0f;
             GetCollider(2).motorTorque = power;
             GetCollider(3).motorTorque = power;
         }
-        
     }
-
     WheelCollider GetCollider(int n)
     {
         return wheels[n].gameObject.GetComponent<WheelCollider>();
