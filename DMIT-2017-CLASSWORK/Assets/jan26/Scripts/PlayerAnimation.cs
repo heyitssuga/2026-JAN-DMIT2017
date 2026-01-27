@@ -32,6 +32,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void InitializeAnimation(AnimationData animationData)
     {
+        StopAllCoroutines();
         StartCoroutine(PlayAnimation(animationData));
     }
 
@@ -40,6 +41,26 @@ public class PlayerAnimation : MonoBehaviour
         if(moveDirection.y < 0)
         {
             InitializeAnimation(animationDictionary[PlayerAnimationState.WALK_DOWN]);
+        }
+
+        if (moveDirection.y > 0)
+        {
+            InitializeAnimation(animationDictionary[PlayerAnimationState.WALK_UP]);
+        }
+        
+        if (moveDirection.x < 0)
+        {
+            InitializeAnimation(animationDictionary[PlayerAnimationState.WALK_LEFT]);
+        }
+        
+        if (moveDirection.x > 0)
+        {
+            InitializeAnimation(animationDictionary[PlayerAnimationState.WALK_RIGHT]);
+        }
+
+        if (moveDirection.x == 0 && moveDirection.y == 0)
+        {
+            InitializeAnimation(animationDictionary[PlayerAnimationState.IDLE_DOWN]);
         }
         PlayerAnimationState currentState;
         // using a switch case, check for the current state of the player
