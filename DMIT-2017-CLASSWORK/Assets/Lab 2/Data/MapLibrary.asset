@@ -15,3 +15,6 @@ MonoBehaviour:
   mapLibrary:
   - {fileID: 11400000, guid: 75432c3dede4f2247a58dded50512147, type: 2}
   - {fileID: 11400000, guid: a14be61778e44534eb86dccf35a03b65, type: 2}
+  - {fileID: 11400000, guid: 023542b0351fdb0449caea762c4570a9, type: 2}
+  - {fileID: 11400000, guid: 7572c8b8b9b589448b17f8f05f4f5a95, type: 2}
+  - {fileID: 11400000, guid: 53e06e16b0b3bee49953bea361b49c04, type: 2}

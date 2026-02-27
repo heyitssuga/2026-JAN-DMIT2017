@@ -4,11 +4,11 @@ public class MeleeEnemy : Enemy
 {
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("hit");
     }
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
     }
 }

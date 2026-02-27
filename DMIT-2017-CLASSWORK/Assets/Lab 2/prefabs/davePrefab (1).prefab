@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
   enemyID: 0
   HP: 10
-  ATK: 0
+  ATK: 3
   DEF: 0
   attackDelay: 2
   sightline: {fileID: 6880635487242236740}

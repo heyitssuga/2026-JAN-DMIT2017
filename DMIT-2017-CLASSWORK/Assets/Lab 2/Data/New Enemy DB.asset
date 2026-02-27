@@ -15,5 +15,5 @@ MonoBehaviour:
   enemies:
   - enemySO: {fileID: 11400000, guid: f64465750e2206c45b306ce99fce9691, type: 2}
     enemyID: 1
-  - enemySO: {fileID: 11400000, guid: f64465750e2206c45b306ce99fce9691, type: 2}
+  - enemySO: {fileID: 11400000, guid: 7acfbc20f6b6b2f46a57eeaa24b7aa71, type: 2}
     enemyID: 0
